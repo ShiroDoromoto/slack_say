@@ -4,8 +4,9 @@ from slackclient import SlackClient
 import time
 import subprocess
 import re
+import sys
 
-slack_token = sys.argv[0]
+slack_token = sys.argv[1]
 
 sc = SlackClient(slack_token)
 

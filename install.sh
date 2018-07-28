@@ -12,4 +12,6 @@ echo 'if which pyenv > /dev/null; then eval "$(pyenv init -)"; fi' >> ~/.bash_pr
 pyenv install 3.6.5
 pyenv local 3.6.5
 
+python -V
+
 pip install slackclient --user
