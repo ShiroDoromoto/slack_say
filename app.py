@@ -24,6 +24,7 @@ if sc.rtm_connect():
           message = re.sub(';', " ", message)
           message = re.sub('\'', " ", message)
           message = re.sub('\"', " ", message)
+          message = message[:100] + ('。以下略' if message[100:] else '')
           cmd = '/usr/bin/say ' + '"' + message + '"'
           subprocess.run(cmd, shell=True)
           print(message)
