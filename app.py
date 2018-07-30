@@ -17,11 +17,13 @@ if sc.rtm_connect():
       if 'type' in data and 'text' in data:
         if data['type'] == 'message':
           message = data['text'].strip()
-          message = re.sub(r'[!-/]', "", message)
-          message = re.sub(r'[\[-\`]', "", message)
-          message = re.sub(r'[\{-\~]', "", message)
+          #message = re.sub(r'[!-/]', "", message)
+          #message = re.sub(r'[\[-\`]', "", message)
+          #message = re.sub(r'[\{-\~]', "", message)
           message = re.sub('\n', " ", message)
-          message = re.sub(';', "", message)
+          message = re.sub(';', " ", message)
+          message = re.sub('\'', " ", message)
+          message = re.sub('\"', " ", message)
           cmd = '/usr/bin/say ' + '"' + message + '"'
           subprocess.run(cmd, shell=True)
           print(message)
