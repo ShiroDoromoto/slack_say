@@ -16,6 +16,22 @@ if sc.rtm_connect():
     for data in response:
       if 'type' in data and 'text' in data:
         if data['type'] == 'message':
+
+          res = sc.api_call(
+            "channels.info",
+            channel=data['channel']
+          )
+          #print(res['channel']['name'])
+          channel = res['channel']['name']
+
+          res = sc.api_call(
+            "users.info",
+            user=data['user']
+          )
+          #print(res['user']['name'])
+          #print(res['user']['real_name'])
+          user_name = res['user']['real_name']
+
           message = data['text'].strip()
           #message = re.sub(r'[!-/]', "", message)
           #message = re.sub(r'[\[-\`]', "", message)
@@ -25,9 +41,10 @@ if sc.rtm_connect():
           message = re.sub('\'', " ", message)
           message = re.sub('\"', " ", message)
           message = message[:100] + ('。以下略' if message[100:] else '')
+          message = channel + ' ' + user_name + ' ' + message
           cmd = '/usr/bin/say ' + '"' + message + '"'
           subprocess.run(cmd, shell=True)
-          print(message)
+          #print(data)
 
     time.sleep(3)
 else:
