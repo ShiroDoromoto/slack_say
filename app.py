@@ -52,11 +52,11 @@ if sc.rtm_connect():
           message = re.sub(';', " ", message)
           message = re.sub('\'', " ", message)
           message = re.sub('\"', " ", message)
-          message = message[:100] + ('。以下略' if message[100:] else '')
+          message = message[:200] + ('。以下略' if message[200:] else '')
           message = channel + ' ' + user_name + ' ' + message
           cmd = '/usr/bin/say ' + '"' + message + '"'
-          #subprocess.run(cmd, shell=True)
-          print(data)
+          subprocess.run(cmd, shell=True)
+          #print(data)
 
     time.sleep(3)
 else:
