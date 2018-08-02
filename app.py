@@ -24,13 +24,15 @@ if sc.rtm_connect():
           #print(res['channel']['name'])
           channel = res['channel']['name']
 
-          res = sc.api_call(
-            "users.info",
-            user=data['user']
-          )
-          #print(res['user']['name'])
-          #print(res['user']['real_name'])
-          user_name = res['user']['real_name']
+          user_name = ''
+          if 'user' in data:
+            res = sc.api_call(
+              "users.info",
+              user=data['user']
+            )
+            #print(res['user']['name'])
+            #print(res['user']['real_name'])
+            user_name = res['user']['real_name']
 
           message = data['text'].strip()
           #message = re.sub(r'[!-/]', "", message)
