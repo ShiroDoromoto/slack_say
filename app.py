@@ -8,6 +8,11 @@ import sys
 
 slack_token = sys.argv[1]
 
+allowd_chanels_array = []
+if 2 in sys.argv:
+  allowd_chanels = sys.argv[2]
+  allowd_chanels_array = allowd_chanels.split()
+
 sc = SlackClient(slack_token)
 
 if sc.rtm_connect():
@@ -17,12 +22,17 @@ if sc.rtm_connect():
       if 'type' in data and 'text' in data:
         if data['type'] == 'message':
 
+          channel = ''
           res = sc.api_call(
             "channels.info",
             channel=data['channel']
           )
           #print(res['channel']['name'])
           channel = res['channel']['name']
+
+          # チャネル指定があった場合は制限をかける
+          if len(allowd_chanels_array) > 0 and channel not in allowd_chanels_array:
+              continue
 
           user_name = ''
           if 'user' in data:
@@ -45,8 +55,8 @@ if sc.rtm_connect():
           message = message[:100] + ('。以下略' if message[100:] else '')
           message = channel + ' ' + user_name + ' ' + message
           cmd = '/usr/bin/say ' + '"' + message + '"'
-          subprocess.run(cmd, shell=True)
-          #print(data)
+          #subprocess.run(cmd, shell=True)
+          print(data)
 
     time.sleep(3)
 else:

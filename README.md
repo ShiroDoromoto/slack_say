@@ -55,4 +55,11 @@ https://api.slack.com/custom-integrations/legacy-tokens
 python app.py "xoxp-xxxxxxxxxxxx-xxxxxxxxxxx-xxxxxxxxxxx-xxxxxxxxxxxxxxxxxxxxxxxxxxx"
 ```
 
+チャネルを限定する場合
+
+```
+python app.py "xoxp-xxxxxxxxxxxx-xxxxxxxxxxx-xxxxxxxxxxx-xxxxxxxxxxxxxxxxxxxxxxxxxxx" "channel1,channel2"
+```
+
+
 この状態で、Slackにメッセージがあったら、発話があるはず。
