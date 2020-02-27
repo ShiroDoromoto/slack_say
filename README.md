@@ -61,5 +61,10 @@ python app.py "xoxp-xxxxxxxxxxxx-xxxxxxxxxxx-xxxxxxxxxxx-xxxxxxxxxxxxxxxxxxxxxxx
 python app.py "xoxp-xxxxxxxxxxxx-xxxxxxxxxxx-xxxxxxxxxxx-xxxxxxxxxxxxxxxxxxxxxxxxxxx" "channel1,channel2"
 ```
 
+キーワードを限定する場合
+
+```
+python app.py "xoxp-xxxxxxxxxxxx-xxxxxxxxxxx-xxxxxxxxxxx-xxxxxxxxxxxxxxxxxxxxxxxxxxx" "" "hogehoge,piyopiyo"
+```
 
 この状態で、Slackにメッセージがあったら、発話があるはず。
