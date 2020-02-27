@@ -74,7 +74,7 @@ if sc.rtm_connect():
           message = re.sub(';', " ", message)
           message = re.sub('\'', " ", message)
           message = re.sub('\"', " ", message)
-          message = message[:200] + ('。以下略' if message[200:] else '')
+          message = message[:20] + ('。以下略' if message[20:] else '')
           message = channel_name + ' ' + user_name + ' ' + message
           print(message)
           cmd = '/usr/bin/say ' + '"' + message + '"'
